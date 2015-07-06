@@ -36,7 +36,7 @@ var resources = [{
   {
     name: "grey",
     type: "image",
-    src: "grey.png"
+    src: "square.png"
   }
 
 ];
