@@ -1,3 +1,8 @@
+/*$(window).on('resize orientationChange', function(event) {
+  var width = $(window).width();
+  var height = $(window).height();
+  jwplayer('player').resize(width, height);
+});*/
 /*var resizeViewPort = function(width, height) {
   if (window.outerWidth) {
     window.resizeTo(
@@ -20,7 +25,7 @@ var PlayScreen = me.ScreenObject.extend({
     me.levelDirector.loadLevel("level1");
     me.input.bindKey(me.input.KEY.LEFT, "left");
     me.input.bindKey(me.input.KEY.RIGHT, "right");
-    me.input.bindKey(me.input.KEY.DOWN, "down");
+    //me.input.bindKey(me.input.KEY.DOWN, "down");
     document.getElementById('game_state').innerHTML = "Collect all of the coins!";
     document.getElementById('instructions').innerHTML = "Arrows to move and Space to jump.";
   }

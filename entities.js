@@ -2,14 +2,15 @@ var PlayerEntity = me.ObjectEntity.extend({
   init: function(x, y, settings) {
     this.parent(x, y, settings);
     me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
-    this.setVelocity(2, 50);
+    this.setVelocity(2, 15);
   },
   update: function() {
     if (me.input.isKeyPressed('left')) { this.doWalk(true); } 
     else if (me.input.isKeyPressed('right')) { this.doWalk(false); }
     else { this.vel.x = 0; };
     if (me.input.isKeyPressed('jump')) {
-      this.doJump();}
+      this.forceJump();
+    }
     me.game.collide(this);
     this.updateMovement();
     if (this.bottom > 900){ }
@@ -83,8 +84,10 @@ var JetpackEntity = me.CollectableEntity.extend({
     this.parent(x, y, settings);
   },
   onCollision: function (res, obj) {
+    var currentGravity = obj.gravity;
+    setTimeout(function(){obj.gravity=currentGravity;},10000 );
     this.collidable = false;
     me.game.remove(this);
     obj.gravity = 0;
-  },
+  }
 });
