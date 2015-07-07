@@ -1,3 +1,17 @@
+/*var resizeViewPort = function(width, height) {
+  if (window.outerWidth) {
+    window.resizeTo(
+        width + (window.outerWidth - window.innerWidth),
+        height + (window.outerHeight - window.innerHeight)
+    );
+  } else {
+    window.resizeTo(500, 500);
+    window.resizeTo(
+        width + (500 - document.body.offsetWidth),
+        height + (500 - document.body.offsetHeight)
+    );
+  }
+};*/
 var PlayScreen = me.ScreenObject.extend({
   onDestroyEvent: function() {
     me.gamestat.reset("coins");
