@@ -24,7 +24,7 @@ var resources = [{
     src: "titleScreen.png"
   },
   {
-    name: "coin",
+    name: "shield",
     type: "image",
     src: "shield.png"
   },

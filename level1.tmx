@@ -56,16 +56,16 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="coin">
-  <object id="36" name="coin" x="581" y="464" width="66" height="60">
+ <objectgroup name="shield">
+  <object id="36" name="shield" x="581" y="464" width="66" height="60">
    <properties>
-    <property name="image" value="coin"/>
+    <property name="image" value="shield"/>
     <property name="spritewidth" value="16"/>
    </properties>
   </object>
-  <object id="34" name="coin" x="512" y="466" width="66" height="60">
+  <object id="34" name="shield" x="512" y="466" width="66" height="60">
    <properties>
-    <property name="image" value="coin"/>
+    <property name="image" value="shield"/>
     <property name="spritewidth" value="16"/>
    </properties>
   </object>
