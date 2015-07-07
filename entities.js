@@ -1,3 +1,4 @@
+var isInvincible = false;
 var PlayerEntity = me.ObjectEntity.extend({
   init: function(x, y, settings) {
     this.parent(x, y, settings);
@@ -34,6 +35,10 @@ var ShieldEntity = me.CollectableEntity.extend({
     this.parent(x, y, settings);
   },
   onCollision : function (res, obj) {
+    this.collidable = false;
+    me.game.remove(this);
+    setTimeout(function(){isInvincible = false;},10000 );
+    isInvincible = true;
     }
   });
 var EnemyEntity = me.ObjectEntity.extend({
@@ -49,7 +54,9 @@ var EnemyEntity = me.ObjectEntity.extend({
     this.collidable = true;
   },
   onCollision: function(res, obj) {
-    obj.gameOver();
+    if (isInvincible==false) {
+      obj.gameOver();
+    }
   },
   update: function() {
     if (!this.visible){

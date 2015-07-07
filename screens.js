@@ -1,33 +1,16 @@
-/*$(window).on('resize orientationChange', function(event) {
-  var width = $(window).width();
-  var height = $(window).height();
-  jwplayer('player').resize(width, height);
-});*/
-/*var resizeViewPort = function(width, height) {
-  if (window.outerWidth) {
-    window.resizeTo(
-        width + (window.outerWidth - window.innerWidth),
-        height + (window.outerHeight - window.innerHeight)
-    );
-  } else {
-    window.resizeTo(500, 500);
-    window.resizeTo(
-        width + (500 - document.body.offsetWidth),
-        height + (500 - document.body.offsetHeight)
-    );
-  }
-};*/
 var PlayScreen = me.ScreenObject.extend({
   onDestroyEvent: function() {
     me.gamestat.reset("coins");
   },
   onResetEvent: function() {
+
     me.levelDirector.loadLevel("level1");
     me.input.bindKey(me.input.KEY.LEFT, "left");
     me.input.bindKey(me.input.KEY.RIGHT, "right");
     //me.input.bindKey(me.input.KEY.DOWN, "down");
-    document.getElementById('game_state').innerHTML = "Collect all of the coins!";
-    document.getElementById('instructions').innerHTML = "Arrows to move and Space to jump.";
+    document.getElementById('game_state').innerHTML = "Kill all the monsters!";
+    document.getElementById('instructions').innerHTML = "Use the left and right arrows to move, the up arrow to jump, and the space bar to shoot.";
+    //document.getElementById('timer').innerHTML = ;
   }
 });
 var TitleScreen = me.ScreenObject.extend({
@@ -43,7 +26,7 @@ var TitleScreen = me.ScreenObject.extend({
     }
   },
   update: function() {
-    if (me.input.isKeyPressed('jump')) {
+    if (me.input.isKeyPressed('jump')) { //shoot
       me.state.change(me.state.PLAY);
     }
     return true;

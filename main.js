@@ -1,14 +1,14 @@
 var jsApp = {
   onload: function() {
-    if (!me.video.init('jsapp', 800, 600, true, 1.0)) {
+    if (!me.video.init('jsapp', 900, 600, true, 1.0)) {
       alert("html 5 canvas is not supported by this browser.");
       return;
     }
     me.loader.onload = this.loaded.bind(this);
     me.loader.preload(resources);
     me.state.change(me.state.LOADING);
-   //me.gamestat.add("coins", 0);
-   // me.gamestat.add("totalCoins", 3);
+    //me.gamestat.add("coins", 0);
+    // me.gamestat.add("totalCoins", 3);
   },
   loaded: function() {
     me.entityPool.add("player", PlayerEntity);
