@@ -33,7 +33,7 @@ var PlayScreen = me.ScreenObject.extend({
 var TitleScreen = me.ScreenObject.extend({
   init: function() {
     this.parent(true);
-    me.input.bindKey(me.input.KEY.SPACE, "jump", true);
+    me.input.bindKey(me.input.KEY.UP, "jump", true);
   },
   onResetEvent: function() {
     if (this.title == null) {

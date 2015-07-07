@@ -37,11 +37,5 @@ var resources = [{
     name: "jetpack",
     type: "image",
     src: "jetpack.png"
-  },
-  {
-    name: "buildings",
-    type: "image",
-    src: "square.png"
   }
-
 ];
