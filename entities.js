@@ -92,6 +92,15 @@ var JetpackEntity = me.CollectableEntity.extend({
     obj.gravity = 0;
   }
 });
+var KeyEntity = me.CollectableEntity.extend({
+  init: function(x, y, settings) {
+    this.parent(x, y, settings);
+  },
+  onCollision: function (res,obj) {
+    this.collidable = false;
+    me.game.remove(this);
+  }
+});
 
 /* me.gamestat.updateValue("coins", 1);
 this.collidable = false;

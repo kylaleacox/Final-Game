@@ -35,3 +35,29 @@ var TitleScreen = me.ScreenObject.extend({
     context.drawImage(this.title, 50, 50);
   }
 });
+
+/*
+ var Timer;
+ var TotalSeconds = 50;
+
+ function CreateTimer (TimerID, Time) {
+ Timer = document.getElementbyId(TimerID);
+ TotalSeconds = Time;
+ }
+ UpdateTimer() {
+ window.setTimeout("Tick()", 1000);
+ }
+ function Tick() {
+ if (TotalSeconds <= 0) {
+ alert("Time's up!")
+ return;
+ }
+ TotalSeconds -= 1;
+ UpdateTimer();
+ window.setTimeout("Tick()", 1000);
+ }
+ function UpdateTimer() {
+ Timer.innerHTML =TotalSeconds;
+ }
+
+ */

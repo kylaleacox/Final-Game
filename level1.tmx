@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="60" height="100" tilewidth="16" tileheight="16" nextobjectid="62">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="60" height="100" tilewidth="16" tileheight="16" nextobjectid="65">
  <tileset firstgid="1" name="collision" tilewidth="16" tileheight="16">
   <image source="collision.png" width="80" height="16"/>
   <tile id="0">
@@ -16,6 +16,9 @@
  </tileset>
  <tileset firstgid="23" name="shield" tilewidth="45" tileheight="45">
   <image source="shield.png" width="45" height="45"/>
+ </tileset>
+ <tileset firstgid="24" name="key" tilewidth="81" tileheight="51">
+  <image source="key.png" width="81" height="51"/>
  </tileset>
  <layer name="foreground" width="60" height="100">
   <data encoding="base64">
@@ -39,7 +42,7 @@
   </data>
  </layer>
  <objectgroup name="EnemyEntities">
-  <object id="17" name="EnemyEntity" x="0" y="877.333" width="282.667" height="48"/>
+  <object id="17" name="EnemyEntity" x="20" y="875.333" width="188" height="48"/>
   <object id="38" name="EnemyEntity" x="204.667" y="702" width="282.667" height="48"/>
   <object id="39" name="EnemyEntity" x="788" y="1116" width="119.334" height="48"/>
   <object id="40" name="EnemyEntity" x="580.667" y="1356" width="83.3335" height="48"/>
@@ -55,6 +58,7 @@
    </properties>
   </object>
   <object id="61" name="EnemyEntity" x="183.333" y="348" width="83.3335" height="48"/>
+  <object id="63" name="EnemyEntity" x="623" y="58" width="268" height="32"/>
  </objectgroup>
  <objectgroup name="shield">
   <object id="36" name="shield" x="426.455" y="164" width="66" height="60">
@@ -64,5 +68,13 @@
    </properties>
   </object>
   <object id="60" name="EnemyEntity" x="69.3333" y="347" width="83.3335" height="48"/>
+ </objectgroup>
+ <objectgroup name="key">
+  <object id="64" name="key" x="775" y="27" width="142" height="61">
+   <properties>
+    <property name="image" value="key"/>
+    <property name="spritewidth" value="81"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
