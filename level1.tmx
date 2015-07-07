@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="60" height="100" tilewidth="16" tileheight="16" nextobjectid="59">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="60" height="100" tilewidth="16" tileheight="16" nextobjectid="60">
  <tileset firstgid="1" name="coin" tilewidth="16" tileheight="16">
   <image source="coin.png" width="64" height="16"/>
  </tileset>
@@ -40,12 +40,6 @@
  </layer>
  <objectgroup name="EnemyEntities">
   <object id="17" name="EnemyEntity" x="0" y="877.333" width="282.667" height="48"/>
-  <object id="35" name="jetpack" x="212" y="1422" width="48" height="48">
-   <properties>
-    <property name="image" value="jetpack"/>
-    <property name="spritewidth" value="50"/>
-   </properties>
-  </object>
   <object id="37" name="EnemyEntity" x="18.6665" y="350" width="249.333" height="48"/>
   <object id="38" name="EnemyEntity" x="204.667" y="702" width="282.667" height="48"/>
   <object id="39" name="EnemyEntity" x="788" y="1116" width="119.334" height="48"/>
@@ -55,15 +49,21 @@
   <object id="43" name="EnemyEntity" x="552.333" y="842" width="83.3335" height="48"/>
   <object id="44" name="EnemyEntity" x="682.333" y="842" width="83.3335" height="48"/>
   <object id="45" name="EnemyEntity" x="824.333" y="842" width="83.3335" height="48"/>
+  <object id="35" name="jetpack" x="212" y="1422" width="48" height="48">
+   <properties>
+    <property name="image" value="jetpack"/>
+    <property name="spritewidth" value="50"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="coin">
-  <object id="34" name="coin" x="512" y="466" width="66" height="60">
+  <object id="36" name="coin" x="581" y="464" width="66" height="60">
    <properties>
     <property name="image" value="coin"/>
     <property name="spritewidth" value="16"/>
    </properties>
   </object>
-  <object id="36" name="coin" x="581" y="464" width="66" height="60">
+  <object id="34" name="coin" x="512" y="466" width="66" height="60">
    <properties>
     <property name="image" value="coin"/>
     <property name="spritewidth" value="16"/>

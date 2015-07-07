@@ -26,7 +26,7 @@ var resources = [{
   {
     name: "coin",
     type: "image",
-    src: "coin.png"
+    src: "shield.png"
   },
   {
     name: "badGuy",
@@ -37,11 +37,5 @@ var resources = [{
     name: "jetpack",
     type: "image",
     src: "jetpack.png"
-  },
-  {
-    name: "buildings",
-    type: "image",
-    src: "square.png"
   }
-
 ];
