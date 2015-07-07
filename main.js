@@ -7,12 +7,12 @@ var jsApp = {
     me.loader.onload = this.loaded.bind(this);
     me.loader.preload(resources);
     me.state.change(me.state.LOADING);
-    me.gamestat.add("coins", 0);
-    me.gamestat.add("totalCoins", 3);
+   //me.gamestat.add("coins", 0);
+   // me.gamestat.add("totalCoins", 3);
   },
   loaded: function() {
     me.entityPool.add("player", PlayerEntity);
-    me.entityPool.add("coin", CoinEntity);
+    me.entityPool.add("shield",ShieldEntity);
     me.entityPool.add("jetpack", JetpackEntity);
     me.entityPool.add("EnemyEntity", EnemyEntity);
     me.state.set(me.state.PLAY, new PlayScreen());
