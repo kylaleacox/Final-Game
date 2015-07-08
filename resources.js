@@ -38,4 +38,9 @@ var resources = [{
     type: "image",
     src: "jetpack.png"
   }
-];
+  /*{
+	  name: "bullet",
+	  type: "image",
+	  src: "ball.png"
+  }*/
+  ];

@@ -1,4 +1,4 @@
-var PlayerEntity = me.ObjectEntity.extend({
+var PlayerEntity = me.Entity.extend({
   init: function(x, y, settings) {
     this.parent(x, y, settings);
     me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
@@ -36,7 +36,7 @@ var ShieldEntity = me.CollectableEntity.extend({
   onCollision : function (res, obj) {
     }
   });
-var EnemyEntity = me.ObjectEntity.extend({
+var EnemyEntity = me.Entity.extend({
   init: function(x, y, settings) {
     settings.image = "badguy";
     settings.spritewidth = 32;

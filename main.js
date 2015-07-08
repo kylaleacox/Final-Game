@@ -1,6 +1,16 @@
 var jsApp = {
   onload: function() {
-    if (!me.video.init('jsapp', 800, 600, true, 1.0)) {
+    if (!me.video.init(800, 600, {
+		wrapper: "jsapp",
+		renderer: me.video.CANVAS,
+		doubleBuffering: true,
+		scale: 2.0
+	})){
+		
+	
+	
+	
+	//'jsapp', 800, 600, true, 1.0)) {
       alert("html 5 canvas is not supported by this browser.");
       return;
     }
@@ -11,10 +21,10 @@ var jsApp = {
    // me.gamestat.add("totalCoins", 3);
   },
   loaded: function() {
-    me.entityPool.add("player", PlayerEntity);
-    me.entityPool.add("shield",ShieldEntity);
-    me.entityPool.add("jetpack", JetpackEntity);
-    me.entityPool.add("EnemyEntity", EnemyEntity);
+    me.pool.register("player", PlayerEntity);
+    me.pool.register("shield",ShieldEntity);
+    me.pool.register("jetpack", JetpackEntity);
+    me.pool.register("EnemyEntity", EnemyEntity);
     me.state.set(me.state.PLAY, new PlayScreen());
     me.state.set(me.state.MENU, new TitleScreen());
     me.state.transition("fade", "#2FA2C2", 250);

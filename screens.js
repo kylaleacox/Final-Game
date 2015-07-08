@@ -17,7 +17,7 @@
     );
   }
 };*/
-var PlayScreen = me.ScreenObject.extend({
+var PlayScreen = me.Renderable.extend({
   onDestroyEvent: function() {
     me.gamestat.reset("coins");
   },
@@ -30,9 +30,9 @@ var PlayScreen = me.ScreenObject.extend({
     document.getElementById('instructions').innerHTML = "Arrows to move and Space to jump.";
   }
 });
-var TitleScreen = me.ScreenObject.extend({
+var TitleScreen = me.Renderable.extend({
   init: function() {
-    this.parent(true);
+    this._super(me.Renderable, 'init', [0, 0, 50, 50]);
     me.input.bindKey(me.input.KEY.UP, "jump", true);
   },
   onResetEvent: function() {
