@@ -8,7 +8,7 @@ var jsApp = {
     me.loader.preload(resources);
     me.state.change(me.state.LOADING);
     me.gamestat.add("enemies", 0);
-    me.gamestat.add("totalEnemies", 2);
+    me.gamestat.add("totalEnemies", 22);
   },
   loaded: function() {
     me.entityPool.add("star", StarEntity);
