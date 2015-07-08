@@ -103,6 +103,16 @@ var KeyEntity = me.CollectableEntity.extend({
     me.game.remove(this);
   }
 });
+var StarEntity = me.CollectableEntity.extend({
+  init: function(x, y, settings) {
+    this.parent(x, y, settings);
+  },
+   onCollision: function(res, obj) {
+     this.collidable = false;
+     me.game.remove(this);
+    }
+  };
+
 
 /* me.gamestat.updateValue("coins", 1);
 this.collidable = false;
