@@ -11,6 +11,7 @@ var jsApp = {
     // me.gamestat.add("totalCoins", 3);
   },
   loaded: function() {
+    me.entityPool.add("star", StarEntity);
     me.entityPool.add("key", KeyEntity);
     me.entityPool.add("player", PlayerEntity);
     me.entityPool.add("shield", ShieldEntity);

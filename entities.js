@@ -1,8 +1,8 @@
 var isInvincible = false;
-var downarrow = false;
-var hasJetpack = false;
-if (me.input.isKeyPressed('down')) {
-  if (hasJetpack = true) {downarrow = true;}}
+var hasStar = false;
+//var downarrow = false;
+//var hasJetpack = false;
+
 var PlayerEntity = me.ObjectEntity.extend({
   init: function(x, y, settings) {
     this.parent(x, y, settings);
@@ -45,7 +45,7 @@ var ShieldEntity = me.CollectableEntity.extend({
     isInvincible = true;
     }
   });
-var EnemyEntity = me.ObjectEntity.extend({
+var EnemyEntity = me.CollectableEntity.extend({
   init: function(x, y, settings) {
     settings.image = "badguy";
     settings.spritewidth = 32;
@@ -58,9 +58,13 @@ var EnemyEntity = me.ObjectEntity.extend({
     this.collidable = true;
   },
   onCollision: function(res, obj) {
-    if (isInvincible==false) {
+    if (isInvincible==false && hasStar==false) {
       obj.gameOver();
       alert ("Game Over! Try again");
+    }
+    else if (hasStar==true){
+      this.collidable  = false;
+      me.game.remove(this);
     }
   },
   update: function() {
@@ -90,12 +94,15 @@ var JetpackEntity = me.CollectableEntity.extend({
     this.parent(x, y, settings);
   },
   onCollision: function (res, obj) {
+    //if (me.input.isKeyPressed('down')) {
+      //if (hasJetpack = true) {downarrow = true;}}
     var currentGravity = obj.gravity;
     setTimeout(function(){obj.gravity=currentGravity;},10000 );
     this.collidable = false;
     me.game.remove(this);
+    //hasJetpack = true;
     obj.gravity = 0;
-    if (downarrow = true) { obj.gravity=currentGravity;}
+   // if (downarrow = true) { obj.gravity=currentGravity;}
   }
 });
 var KeyEntity = me.CollectableEntity.extend({
@@ -105,7 +112,6 @@ var KeyEntity = me.CollectableEntity.extend({
   onCollision: function (res,obj) {
     this.collidable = false;
     me.game.remove(this);
-    hasJetpack = true;
   }
 });
 var StarEntity = me.CollectableEntity.extend({
@@ -115,8 +121,13 @@ var StarEntity = me.CollectableEntity.extend({
    onCollision: function(res, obj) {
      this.collidable = false;
      me.game.remove(this);
+     hasStar = true;
+     setTimeout(function(){
+       hasStar = false;
+     alert ("Your star powerup has ended! Game over!")
+     obj.gameOver();},60000);
     }
-  };
+  });
 
 
 /* me.gamestat.updateValue("coins", 1);
