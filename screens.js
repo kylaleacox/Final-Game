@@ -1,15 +1,14 @@
 var PlayScreen = me.ScreenObject.extend({
   onDestroyEvent: function() {
-    me.gamestat.reset("coins");
+    me.gamestat.reset("enemies");
   },
   onResetEvent: function() {
 
     me.levelDirector.loadLevel("level1");
     me.input.bindKey(me.input.KEY.LEFT, "left");
     me.input.bindKey(me.input.KEY.RIGHT, "right");
-    me.input.bindKey(me.input.KEY.DOWN, "down");
-    document.getElementById('game_state').innerHTML = "Find the star powerup to kill all the monsters!";
-    document.getElementById('instructions').innerHTML = "Use the left and right arrows to move, the up arrow to jump, and the space bar to shoot.";
+    document.getElementById('game_state').innerHTML = "Find the star powerup to kill all the monsters, then get to the key to win! If you touch a monster without the star, you will die.";
+    document.getElementById('instructions').innerHTML = "The shield powerup makes you invincible and the jetpack lets you fly, each for five seconds. Use the left and right arrows to move, and the up arrow to jump.";
   }
 });
 var TitleScreen = me.ScreenObject.extend({

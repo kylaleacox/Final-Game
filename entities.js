@@ -1,13 +1,11 @@
 var isInvincible = false;
 var hasStar = false;
-//var downarrow = false;
-//var hasJetpack = false;
 
 var PlayerEntity = me.ObjectEntity.extend({
   init: function(x, y, settings) {
     this.parent(x, y, settings);
     me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
-    this.setVelocity(2, 15);
+    this.setVelocity(3, 15);
   },
   update: function() {
     if (me.input.isKeyPressed('left')) { this.doWalk(true); }
@@ -63,6 +61,7 @@ var EnemyEntity = me.CollectableEntity.extend({
       alert ("Game Over! Try again");
     }
     else if (hasStar==true){
+      me.gamestat.updateValue("enemies",1);
       this.collidable  = false;
       me.game.remove(this);
     }
@@ -94,15 +93,11 @@ var JetpackEntity = me.CollectableEntity.extend({
     this.parent(x, y, settings);
   },
   onCollision: function (res, obj) {
-    //if (me.input.isKeyPressed('down')) {
-      //if (hasJetpack = true) {downarrow = true;}}
     var currentGravity = obj.gravity;
-    setTimeout(function(){obj.gravity=currentGravity;},10000 );
+    setTimeout(function(){obj.gravity=currentGravity;},5000 );
     this.collidable = false;
     me.game.remove(this);
-    //hasJetpack = true;
     obj.gravity = 0;
-   // if (downarrow = true) { obj.gravity=currentGravity;}
   }
 });
 var KeyEntity = me.CollectableEntity.extend({
@@ -112,6 +107,9 @@ var KeyEntity = me.CollectableEntity.extend({
   onCollision: function (res,obj) {
     this.collidable = false;
     me.game.remove(this);
+    if(me.gamestat.getItemValue("enemies")==me.gamestat.getItemValue("totalEnemies")){
+      alert ("Congratulations, you win!");
+    }
   }
 });
 var StarEntity = me.CollectableEntity.extend({
@@ -122,16 +120,10 @@ var StarEntity = me.CollectableEntity.extend({
      this.collidable = false;
      me.game.remove(this);
      hasStar = true;
+     setTimeout(function(){alert ("You have 30 seconds left to kill all the monsters")},45000);
      setTimeout(function(){
        hasStar = false;
      alert ("Your star powerup has ended! Game over!")
-     obj.gameOver();},60000);
+     obj.gameOver();},75000);
     }
   });
-
-
-/* me.gamestat.updateValue("coins", 1);
-this.collidable = false;
-me.game.remove(this);
-if(me.gamestat.getItemValue("coins") === me.gamestat.getItemValue("totalCoins")){
-  obj.youWin();} */
