@@ -1,4 +1,6 @@
-var resources = [{
+var game;
+if(!game) { game = {}; };
+game.resources = [{
     name: "levelSprites",
     type: "image",
     src: "levelSprites.png"
