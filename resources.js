@@ -3,7 +3,12 @@ var resources = [{
     type: "image",
     src: "levelSprites.png"
   },
-          {
+  {
+    name: "collision",
+    type: "image",
+    src: "collision.png"
+  },
+  {
     name: "level1",
     type: "tmx",
     src: "level1.tmx"
@@ -19,9 +24,9 @@ var resources = [{
     src: "titleScreen.png"
   },
   {
-    name: "coin",
+    name: "shield",
     type: "image",
-    src: "coin.png"
+    src: "shield.png"
   },
   {
     name: "badGuy",
@@ -34,9 +39,8 @@ var resources = [{
     src: "jetpack.png"
   },
   {
-    name: "grey",
+    name: "key",
     type: "image",
-    src: "square.png"
+    src: "key.png"
   }
-
 ];

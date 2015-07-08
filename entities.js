@@ -1,22 +1,20 @@
-/*var hasJetpack = false;*/
-
+var isInvincible = false;
 var PlayerEntity = me.ObjectEntity.extend({
   init: function(x, y, settings) {
     this.parent(x, y, settings);
     me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
-    this.setVelocity(2, 12);
+    this.setVelocity(2, 15);
   },
   update: function() {
     if (me.input.isKeyPressed('left')) { this.doWalk(true); } 
     else if (me.input.isKeyPressed('right')) { this.doWalk(false); }
-   /* else if (me.input.isKeyPressed('down') && hasJetpack==true && this.y>100) {
-    }*/
     else { this.vel.x = 0; };
     if (me.input.isKeyPressed('jump')) {
-      this.doJump();}
+      this.forceJump();
+    }
     me.game.collide(this);
     this.updateMovement();
-    if (this.bottom > 490){ this.gameOver(); }
+    if (this.bottom > 900){ }
     if (this.vel.x!=0 || this.vel.y!=0) {
       this.parent(this);
       return true;
@@ -32,23 +30,21 @@ var PlayerEntity = me.ObjectEntity.extend({
     document.getElementById('instructions').innerHTML = "";
   }
 });
-var CoinEntity = me.CollectableEntity.extend({
+var ShieldEntity = me.CollectableEntity.extend({
   init: function(x, y, settings) {
     this.parent(x, y, settings);
   },
   onCollision : function (res, obj) {
-    me.gamestat.updateValue("coins", 1);
     this.collidable = false;
     me.game.remove(this);
-    if(me.gamestat.getItemValue("coins") === me.gamestat.getItemValue("totalCoins")){
-      obj.youWin();
+    setTimeout(function(){isInvincible = false;},10000 );
+    isInvincible = true;
     }
-  }
-}); 
+  });
 var EnemyEntity = me.ObjectEntity.extend({
   init: function(x, y, settings) {
     settings.image = "badguy";
-    settings.spritewidth = 16;
+    settings.spritewidth = 32;
     this.parent(x, y, settings);
     this.startX = x;
     this.endX = x + settings.width - settings.spritewidth;
@@ -58,7 +54,9 @@ var EnemyEntity = me.ObjectEntity.extend({
     this.collidable = true;
   },
   onCollision: function(res, obj) {
-    obj.gameOver();
+    if (isInvincible==false) {
+      obj.gameOver();
+    }
   },
   update: function() {
     if (!this.visible){
@@ -87,14 +85,26 @@ var JetpackEntity = me.CollectableEntity.extend({
     this.parent(x, y, settings);
   },
   onCollision: function (res, obj) {
+    var currentGravity = obj.gravity;
+    setTimeout(function(){obj.gravity=currentGravity;},10000 );
     this.collidable = false;
     me.game.remove(this);
     obj.gravity = 0;
-    hasJetpack = true;
   }
-  /*update: function() {
-    if (me.input.isKeyPressed('down')) {
-
-    }
-  }*/
 });
+var KeyEntity = me.CollectableEntity.extend({
+  init: function(x, y, settings) {
+    this.parent(x, y, settings);
+  },
+  onCollision: function (res,obj) {
+    this.collidable = false;
+    me.game.remove(this);
+    //me.levelDirector.loadLevel("level2");
+  }
+});
+
+/* me.gamestat.updateValue("coins", 1);
+this.collidable = false;
+me.game.remove(this);
+if(me.gamestat.getItemValue("coins") === me.gamestat.getItemValue("totalCoins")){
+  obj.youWin();} */
