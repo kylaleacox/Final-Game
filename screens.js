@@ -7,7 +7,7 @@ var PlayScreen = me.ScreenObject.extend({
     me.levelDirector.loadLevel("level1");
     me.input.bindKey(me.input.KEY.LEFT, "left");
     me.input.bindKey(me.input.KEY.RIGHT, "right");
-    document.getElementById('game_state').innerHTML = "Kill all the monsters!";
+    document.getElementById('game_state').innerHTML = "Find the star powerup to kill all the monsters!";
     document.getElementById('instructions').innerHTML = "Use the left and right arrows to move, the up arrow to jump, and the space bar to shoot.";
   }
 });

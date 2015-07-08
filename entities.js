@@ -1,5 +1,4 @@
 var isInvincible = false;
-var hasDied = false;
 var PlayerEntity = me.ObjectEntity.extend({
   init: function(x, y, settings) {
     this.parent(x, y, settings);
@@ -56,8 +55,8 @@ var EnemyEntity = me.ObjectEntity.extend({
   },
   onCollision: function(res, obj) {
     if (isInvincible==false) {
-      hasDied = true;
       obj.gameOver();
+      alert ("Game Over! Try again");
     }
   },
   update: function() {
