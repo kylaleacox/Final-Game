@@ -42,5 +42,10 @@ var resources = [{
     name: "key",
     type: "image",
     src: "key.png"
+  },
+  {
+    name: "star",
+    type: "image",
+    src: "starcoin.png"
   }
 ];

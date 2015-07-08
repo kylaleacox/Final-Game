@@ -1,5 +1,8 @@
 var isInvincible = false;
-var hasDied = false;
+var downarrow = false;
+var hasJetpack = false;
+if (me.input.isKeyPressed('down')) {
+  if (hasJetpack = true) {downarrow = true;}}
 var PlayerEntity = me.ObjectEntity.extend({
   init: function(x, y, settings) {
     this.parent(x, y, settings);
@@ -56,8 +59,8 @@ var EnemyEntity = me.ObjectEntity.extend({
   },
   onCollision: function(res, obj) {
     if (isInvincible==false) {
-      hasDied = true;
       obj.gameOver();
+      alert ("Game Over! Try again");
     }
   },
   update: function() {
@@ -92,6 +95,7 @@ var JetpackEntity = me.CollectableEntity.extend({
     this.collidable = false;
     me.game.remove(this);
     obj.gravity = 0;
+    if (downarrow = true) { obj.gravity=currentGravity;}
   }
 });
 var KeyEntity = me.CollectableEntity.extend({
@@ -101,6 +105,7 @@ var KeyEntity = me.CollectableEntity.extend({
   onCollision: function (res,obj) {
     this.collidable = false;
     me.game.remove(this);
+    hasJetpack = true;
   }
 });
 var StarEntity = me.CollectableEntity.extend({
