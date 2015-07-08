@@ -99,6 +99,7 @@ var KeyEntity = me.CollectableEntity.extend({
   onCollision: function (res,obj) {
     this.collidable = false;
     me.game.remove(this);
+    //me.levelDirector.loadLevel("level2");
   }
 });
 
