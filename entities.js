@@ -1,4 +1,5 @@
 var isInvincible = false;
+var hasDied = false;
 var PlayerEntity = me.ObjectEntity.extend({
   init: function(x, y, settings) {
     this.parent(x, y, settings);
@@ -6,7 +7,7 @@ var PlayerEntity = me.ObjectEntity.extend({
     this.setVelocity(2, 15);
   },
   update: function() {
-    if (me.input.isKeyPressed('left')) { this.doWalk(true); } 
+    if (me.input.isKeyPressed('left')) { this.doWalk(true); }
     else if (me.input.isKeyPressed('right')) { this.doWalk(false); }
     else { this.vel.x = 0; };
     if (me.input.isKeyPressed('jump')) {
@@ -37,7 +38,7 @@ var ShieldEntity = me.CollectableEntity.extend({
   onCollision : function (res, obj) {
     this.collidable = false;
     me.game.remove(this);
-    setTimeout(function(){isInvincible = false;},10000 );
+    setTimeout(function(){isInvincible = false;},5000 );
     isInvincible = true;
     }
   });
@@ -55,6 +56,7 @@ var EnemyEntity = me.ObjectEntity.extend({
   },
   onCollision: function(res, obj) {
     if (isInvincible==false) {
+      hasDied = true;
       obj.gameOver();
     }
   },
@@ -65,8 +67,8 @@ var EnemyEntity = me.ObjectEntity.extend({
     if (this.alive) {
       if (this.walkLeft && this.pos.x <= this.startX) {
         this.walkLeft = false;
-      } 
-      else if (!this.walkLeft && this.pos.x >= this.endX){ 
+      }
+      else if (!this.walkLeft && this.pos.x >= this.endX){
         this.walkLeft = true;
       }
       this.doWalk(this.walkLeft);
@@ -99,7 +101,6 @@ var KeyEntity = me.CollectableEntity.extend({
   onCollision: function (res,obj) {
     this.collidable = false;
     me.game.remove(this);
-    //me.levelDirector.loadLevel("level2");
   }
 });
 

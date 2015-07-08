@@ -7,10 +7,8 @@ var PlayScreen = me.ScreenObject.extend({
     me.levelDirector.loadLevel("level1");
     me.input.bindKey(me.input.KEY.LEFT, "left");
     me.input.bindKey(me.input.KEY.RIGHT, "right");
-    //me.input.bindKey(me.input.KEY.DOWN, "down");
     document.getElementById('game_state').innerHTML = "Kill all the monsters!";
     document.getElementById('instructions').innerHTML = "Use the left and right arrows to move, the up arrow to jump, and the space bar to shoot.";
-    //document.getElementById('timer').innerHTML = ;
   }
 });
 var TitleScreen = me.ScreenObject.extend({
@@ -26,7 +24,7 @@ var TitleScreen = me.ScreenObject.extend({
     }
   },
   update: function() {
-    if (me.input.isKeyPressed('jump')) { //shoot
+    if (me.input.isKeyPressed('jump')) {
       me.state.change(me.state.PLAY);
     }
     return true;
@@ -35,29 +33,3 @@ var TitleScreen = me.ScreenObject.extend({
     context.drawImage(this.title, 50, 50);
   }
 });
-
-/*
- var Timer;
- var TotalSeconds = 50;
-
- function CreateTimer (TimerID, Time) {
- Timer = document.getElementbyId(TimerID);
- TotalSeconds = Time;
- }
- UpdateTimer() {
- window.setTimeout("Tick()", 1000);
- }
- function Tick() {
- if (TotalSeconds <= 0) {
- alert("Time's up!")
- return;
- }
- TotalSeconds -= 1;
- UpdateTimer();
- window.setTimeout("Tick()", 1000);
- }
- function UpdateTimer() {
- Timer.innerHTML =TotalSeconds;
- }
-
- */
