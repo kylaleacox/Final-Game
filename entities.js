@@ -108,6 +108,7 @@ var JetpackEntity = me.CollectableEntity.extend({
 });
 var warningID;
 var gameoverID;
+
 var KeyEntity = me.CollectableEntity.extend({
   init: function(x, y, settings) {
     this.parent(x, y, settings);
@@ -122,6 +123,7 @@ var KeyEntity = me.CollectableEntity.extend({
       //obj.youWin();
       obj.gameOver();
     }
+    else { alert("You need to kill the monsters before you get the key!");}
   }
 });
 var StarEntity = me.CollectableEntity.extend({
