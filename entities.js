@@ -27,14 +27,15 @@ var PlayerEntity = me.ObjectEntity.extend({
     me.state.change(me.state.MENU);
   },
   nextLevel: function() {
-    var currentLevel = me.gamestat.getItemValue ("currentLevel");
-    me.gamestat.setValue ("currentlevel", currentLevel + 1);
+    var currentLevel = me.gamestat.getItemValue("currentLevel");
+    me.gamestat.setValue ("currentLevel", currentLevel + 1);
     me.levelDirector.loadLevel(me.gamestat.getItemValue('currentLevel'));
-    me.gamestat.seValue("enemies",0);
+    me.gamestat.setValue("enemies",0);
 
   },
   youWin: function() {
     this.nextLevel();
+    console.log(currentLevel);
   }
 });
 var ShieldEntity = me.CollectableEntity.extend({
@@ -118,7 +119,8 @@ var KeyEntity = me.CollectableEntity.extend({
       alert ("Congratulations, you win!");
       clearTimeout (gameoverID);
       clearTimeout (warningID);
-      obj.youWin();
+      //obj.youWin();
+      obj.gameOver();
     }
   }
 });
