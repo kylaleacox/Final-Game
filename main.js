@@ -4,6 +4,7 @@ var jsApp = {
       alert("html 5 canvas is not supported by this browser.");
       return;
     }
+    me.audio.init("ogg");
     me.loader.onload = this.loaded.bind(this);
     me.loader.preload(resources);
     me.state.change(me.state.LOADING);

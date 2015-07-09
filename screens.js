@@ -1,6 +1,7 @@
 var PlayScreen = me.ScreenObject.extend({
   onDestroyEvent: function() {
     me.gamestat.reset("enemies");
+    me.audio.stopTrack();
   },
   onResetEvent: function() {
 
@@ -9,6 +10,7 @@ var PlayScreen = me.ScreenObject.extend({
     me.input.bindKey(me.input.KEY.RIGHT, "right");
     document.getElementById('game_state').innerHTML = "Find the star powerup to kill all the monsters, then get to the key to win! If you touch a monster without the star, you will die.";
     document.getElementById('instructions').innerHTML = "The shield powerup makes you invincible and the jetpack lets you fly, each for five seconds. Use the left and right arrows to move, and the up arrow to jump.";
+    me.audio.playTrack("EyeTiger");
   }
 });
 var TitleScreen = me.ScreenObject.extend({

@@ -52,5 +52,10 @@ var resources = [{
     name: "star",
     type: "image",
     src: "starcoin.png"
+  },
+  {
+    name: "EyeTiger",
+    type: "audio",
+    src: "./"
   }
 ];
