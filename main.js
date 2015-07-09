@@ -9,6 +9,8 @@ var jsApp = {
     me.state.change(me.state.LOADING);
     me.gamestat.add("enemies", 0);
     me.gamestat.add("totalEnemies", 22);
+    me.gamestat.add("currentLevel",1);
+    me.gamestat.setValue("currentLevel",1);
   },
   loaded: function() {
     me.entityPool.add("star", StarEntity);

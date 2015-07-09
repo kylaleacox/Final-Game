@@ -26,10 +26,15 @@ var PlayerEntity = me.ObjectEntity.extend({
   gameOver: function() {
     me.state.change(me.state.MENU);
   },
+  nextLevel: function() {
+    var currentLevel = me.gamestat.getItemValue ("currentLevel");
+    me.gamestat.setValue ("currentlevel", currentLevel + 1);
+    me.levelDirector.loadLevel(me.gamestat.getItemValue('currentLevel'));
+    me.gamestat.seValue("enemies",0);
+
+  },
   youWin: function() {
-    me.state.change(me.state.MENU);
-    document.getElementById('game_state').innerHTML = "You Win!";
-    document.getElementById('instructions').innerHTML = "";
+    this.nextLevel();
   }
 });
 var ShieldEntity = me.CollectableEntity.extend({
@@ -100,15 +105,20 @@ var JetpackEntity = me.CollectableEntity.extend({
     obj.gravity = 0;
   }
 });
+var warningID;
+var gameoverID;
 var KeyEntity = me.CollectableEntity.extend({
   init: function(x, y, settings) {
     this.parent(x, y, settings);
   },
   onCollision: function (res,obj) {
-    this.collidable = false;
-    me.game.remove(this);
     if(me.gamestat.getItemValue("enemies")==me.gamestat.getItemValue("totalEnemies")){
+      this.collidable = false;
+      me.game.remove(this);
       alert ("Congratulations, you win!");
+      clearTimeout (gameoverID);
+      clearTimeout (warningID);
+      obj.youWin();
     }
   }
 });
@@ -120,8 +130,9 @@ var StarEntity = me.CollectableEntity.extend({
      this.collidable = false;
      me.game.remove(this);
      hasStar = true;
-     setTimeout(function(){alert ("You have 30 seconds left to kill all the monsters")},45000);
-     setTimeout(function(){
+
+     warningID = setTimeout(function(){alert ("You have 30 seconds left to kill all the monsters")},45000);
+     gameoverID = setTimeout(function(){
        hasStar = false;
      alert ("Your star powerup has ended! Game over!")
      obj.gameOver();},75000);

@@ -82,6 +82,7 @@
    <properties>
     <property name="image" value="key"/>
     <property name="spritewidth" value="81"/>
+    <property name="to" value="level2"/>
    </properties>
   </object>
  </objectgroup>
